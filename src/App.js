@@ -7,6 +7,7 @@ const App = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [goTotheNextPage, setGoToTheNextPage] = useState(false);
 
   const handleNameChange = (event) => {
     const value = event.target.value;
@@ -25,7 +26,12 @@ const App = () => {
     setPasswordConfirm(value);
   };
   const handleSubmit = (event) => {
-    event.preventDefault(name, email, password, passwordConfirm);
+    event.preventDefault();
+    if (!areTheSame) {
+      alert("Vos deux mots de passe ne sont pas identiques");
+    } else {
+      setGoToTheNextPage(true);
+    }
   };
 
   const passwordCheck = (string1, string2) => {
@@ -35,51 +41,52 @@ const App = () => {
 
   return (
     <div className="App">
-      <header>
-        <h1>Create Account</h1>
-      </header>
       <div className="body">
-        <form onSubmit={handleSubmit}>
-          <label>Name</label>
-          <input
-            placeholder="Jean Dupont"
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleNameChange}
-          />
-          <label>Email</label>
-          <input
-            placeholder="jeandupont@lereacteur.io"
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          <label>Password</label>
-          <input
-            placeholder="lErEaCtEuR2020"
-            type="password"
-            name="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          <label>Confirm your password</label>
-          <input
-            placeholder="lErEaCtEuR2020"
-            type="password"
-            name="passwordConfirm"
-            value={passwordConfirm}
-            onChange={handlePasswordConfirmChange}
-          />
-          <div className="registerContainer">
-            <input type="submit" value="Register" className="register" />
-          </div>
-          <div>
-            areTheSame?{alert("Vos deux mots de passe ne sont pas identiques")}:
-            <UserSumary />
-          </div>
-        </form>
+        {!goTotheNextPage && (
+          <form onSubmit={handleSubmit}>
+            <h1>Create Account</h1>
+            <label>Name</label>
+            <input
+              placeholder="Jean Dupont"
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleNameChange}
+            />
+            <label>Email</label>
+            <input
+              placeholder="jeandupont@lereacteur.io"
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+            <label>Password</label>
+            <input
+              placeholder="lErEaCtEuR2020"
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            <label>Confirm your password</label>
+            <input
+              placeholder="lErEaCtEuR2020"
+              type="password"
+              name="passwordConfirm"
+              value={passwordConfirm}
+              onChange={handlePasswordConfirmChange}
+            />
+            <div className="registerContainer">
+              <input type="submit" value="Register" className="register" />
+            </div>
+          </form>
+        )}
+      </div>
+      <div className="bodyNextPage">
+        {goTotheNextPage && (
+          <UserSumary name={name} email={email} password={password} />
+        )}
       </div>
       <footer>
         <p>

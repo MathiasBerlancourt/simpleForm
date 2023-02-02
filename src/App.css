@@ -1,38 +1,59 @@
 .App {
+  font-family: "Courier New", Courier, monospace;
+  height: 100vh;
+  font-size: larger;
+
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  padding-top: 15%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+  font-weight: bold;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.body {
+  display: flex;
+  justify-content: center;
+  height: 80%;
+}
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: start;
+  gap: 30px;
+}
+label {
+  font-weight: bold;
+}
+input {
+  height: 30px;
+  border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.register {
+  background-color: #574dcc;
+  color: aliceblue;
+  /* font-weight: bold; */
+  border: 2px lightgray solid;
+  font-size: large;
+  width: 70%;
+}
+.registerContainer {
+  display: flex;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+footer {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer b {
+  font-weight: bold;
 }
